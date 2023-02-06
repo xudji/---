@@ -1,5 +1,0 @@
-git@github.com:xudji/---.git
-https://github.com/xudji/---.git
-
-git@gitee.com:xudji/shengyuu.git
-https://gitee.com/xudji/shengyuu.git
