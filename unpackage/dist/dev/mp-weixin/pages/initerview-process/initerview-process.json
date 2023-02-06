@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "面试流程",
+  "navigationStyle": "custom",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "my-header": "../../common/my-header/my-header",
+    "my-tabbar": "../../common/tabbar/my-tabbar",
+    "process-item": "../../compotent/process/process-item"
+  }
+}

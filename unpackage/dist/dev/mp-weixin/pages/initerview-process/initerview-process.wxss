@@ -1,0 +1,20 @@
+
+page.data-v-11daf1f6 {
+        height: auto;
+}
+.process.data-v-11daf1f6 {
+        width: 750rpx;
+        padding-top: 20px;
+        padding-bottom: 120px;
+        background-size: cover;
+        background-image: linear-gradient(to top, #5555ff 0%, #aa55ff 100%);
+        position: relative;
+}
+.process-content.data-v-11daf1f6 {
+        width: 750rpx;
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: 10rpx;
+        padding-bottom: 4rpx;
+}

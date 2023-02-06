@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "sy-video": "./sy-video"
+  }
+}
