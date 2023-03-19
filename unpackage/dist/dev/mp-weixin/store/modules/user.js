@@ -35,7 +35,7 @@ const user = {
     }, option) {
       commit("changeUserStatus", option);
     },
-    changeOpenIDActions({
+    changeOpenIdActions({
       commit
     }, option) {
       commit("changeOpenID", option);

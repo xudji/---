@@ -15,10 +15,11 @@
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
-    }
+    },
+    "ignoreUploadUnusedFiles": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.30.0",
+  "libVersion": "2.30.2",
   "appid": "wx276fe0ea0f2a3773",
   "projectname": "studentProject",
   "condition": {},

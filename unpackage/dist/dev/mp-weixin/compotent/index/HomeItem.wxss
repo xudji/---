@@ -4,7 +4,6 @@
         height: 404rpx;
         background: #ffffff;
         box-shadow: 0rpx 24rpx 38rpx 0rpx rgba(60, 128, 209, 0.09);
-
         border-radius: 30rpx;
         position: relative;
         margin-bottom: 40rpx;
@@ -12,7 +11,7 @@
 .item-main {
         width: 294rpx;
         height: 371rpx;
-        background-image: url("https://fawn.xuexiluxian.cn/api/profile/upload/2021/08/20/899176a6-ca95-46f0-9848-5c17b5b9c9e3.png");
+        /* background-image: url("https://fawn.xuexiluxian.cn/api/profile/upload/2021/08/20/899176a6-ca95-46f0-9848-5c17b5b9c9e3.png"); */
         background-repeat: no-repeat;
         background-size: cover;
         background-position: 0%;

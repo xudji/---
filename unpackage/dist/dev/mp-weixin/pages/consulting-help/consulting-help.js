@@ -1,6 +1,6 @@
 "use strict";
-const servies_help = require("../../servies/help.js");
 const common_vendor = require("../../common/vendor.js");
+const servies_help = require("../../servies/help.js");
 require("../../servies/request.js");
 const MyHeader = () => "../../common/my-header/my-header.js";
 const _sfc_main = {
@@ -25,6 +25,10 @@ const _sfc_main = {
       };
       const res = await servies_help.getHelpList(data);
       this.dataList = res;
+    },
+    goBack() {
+      common_vendor.index.navigateBack();
+      console.log(1);
     }
   }
 };
@@ -46,7 +50,9 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
         c: item.id
       };
     })
-  } : {});
+  } : {}, {
+    d: common_vendor.o((...args) => $options.goBack && $options.goBack(...args))
+  });
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-016d14f0"], ["__file", "C:/Users/jxd/Desktop/\u524D\u7AEF\u9879\u76EE\u7EC3\u4E60/mini/uni-test/studentProject/pages/consulting-help/consulting-help.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__scopeId", "data-v-016d14f0"], ["__file", "C:/Users/jxd/Desktop/\u524D\u7AEF\u5B66\u4E60\u8D44\u6599/\u524D\u7AEF\u9879\u76EE\u7EC3\u4E60/mini/uni-test/student/pages/consulting-help/consulting-help.vue"]]);
 wx.createPage(MiniProgramPage);

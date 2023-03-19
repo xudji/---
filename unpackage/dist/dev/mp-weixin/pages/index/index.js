@@ -20,7 +20,6 @@ const _sfc_main = {
       success: (res) => {
         let info = common_vendor.index.createSelectorQuery().in(this).select(".home-header");
         info.boundingClientRect((data) => {
-          console.log(data);
           this.clientHeight = res.windowHeight - data.height - 68;
         }).exec(function(res2) {
         });
@@ -66,5 +65,5 @@ function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   };
 }
-const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/jxd/Desktop/\u524D\u7AEF\u9879\u76EE\u7EC3\u4E60/mini/uni-test/studentProject/pages/index/index.vue"]]);
+const MiniProgramPage = /* @__PURE__ */ common_vendor._export_sfc(_sfc_main, [["render", _sfc_render], ["__file", "C:/Users/jxd/Desktop/\u524D\u7AEF\u5B66\u4E60\u8D44\u6599/\u524D\u7AEF\u9879\u76EE\u7EC3\u4E60/mini/uni-test/student/pages/index/index.vue"]]);
 wx.createPage(MiniProgramPage);

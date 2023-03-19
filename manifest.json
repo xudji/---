@@ -53,6 +53,8 @@
         "appid": "wx276fe0ea0f2a3773",
         "setting": {
             "urlCheck": false
+
+
         },
         "usingComponents": true,
         "permission": {}

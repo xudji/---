@@ -1,7 +1,8 @@
 {
+  "navigationBarTitleText": "我的名片",
   "navigationStyle": "custom",
   "enablePullDownRefresh": false,
   "usingComponents": {
-    "my-header": "../../common/tabbar/my-tabbar"
+    "my-header": "../../common/my-header/my-header"
   }
 }

@@ -42,8 +42,8 @@
             </view>
         </view>
     </view>
-
 </template>
+
 
 <script>
     import MyHeader from '@/common/my-header/my-header.vue'

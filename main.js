@@ -5,6 +5,9 @@ import Vue from 'vue'
 Vue.prototype.$store = store
 Vue.config.productionTip = false
 App.mpType = 'app'
+import SignCanvas from "sign-canvas";
+
+Vue.use(SignCanvas);
 const app = new Vue({
     ...App
 })

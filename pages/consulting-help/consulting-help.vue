@@ -20,7 +20,7 @@
         <view class="help-content" v-else>
             暂无数据...
         </view>
-        <view class="help-sure">
+        <view class="help-sure" @tap="goBack">
             确认
         </view>
     </view>
@@ -54,8 +54,13 @@
                 }
                 const res = await getHelpList(data)
                 this.dataList = res
+            },
+            goBack() {
+                uni.navigateBack()
+                console.log(1)
             }
-        }
+        },
+
     }
 </script>
 

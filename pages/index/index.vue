@@ -3,7 +3,7 @@
         <view class="home-container">
             <view class="home-header">
                 <view class="home-title">
-                    胜云前端学院 </view>
+                    胜云技术学院 </view>
                 <view class="home-school">入学信息入口</view>
                 <view class="home-show" @tap="goShowContract">
                     <view class="home-class">
@@ -45,9 +45,6 @@
                 success: (res) => {
                     let info = uni.createSelectorQuery().in(this).select(".home-header")
                     info.boundingClientRect((data) => {
-                        //data包含元素的高度信息
-                        //data.height  头部高度 68tabbar高度
-                        console.log(data)
                         this.clientHeight = res.windowHeight - data.height - 68
                     }).exec(function(res) {
                         //这个方法必须执行，不然获取不到信息
@@ -66,6 +63,7 @@
                 this.homeDate = res
 
             },
+
             goShowContract() {
                 uni.navigateTo({
                     url: '../show-contract/show-contract'

@@ -10,7 +10,9 @@
     "pages/enter-school/enter-school",
     "pages/consulting-help/consulting-help",
     "pages/subject/subject",
-    "pages/show-manage/show-manage.vue"
+    "pages/show-manage/show-manage",
+    "pages/my-contractItem/my-contractItem",
+    "pages/sign-contract/sign-contract"
   ],
   "window": {
     "navigationBarTextStyle": "black",

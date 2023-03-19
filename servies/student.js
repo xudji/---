@@ -1,7 +1,5 @@
 import $http from "./request.js"
-export const stuInfo = ({
-
-}) => {
+export const stuInfo = () => {
     return $http.request({
         url: '/wechat/student/info',
         method: 'GET',

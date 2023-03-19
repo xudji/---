@@ -1,5 +1,6 @@
 {
-
+    "lazyCodeLoading": "requiredComponents",
+    "uniIdRouter": {},
     "pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
         {
             "path": "pages/index/index",
@@ -40,15 +41,15 @@
         {
             "path": "pages/my-card/my-card",
             "style": {
+                "navigationBarTitleText": "我的名片",
                 "navigationStyle": "custom",
                 "enablePullDownRefresh": false
-
             }
         },
         {
             "path": "pages/show-contract/show-contract",
             "style": {
-                "navigationBarTitleText": "",
+                "navigationBarTitleText": "签署协议",
                 "navigationStyle": "custom",
                 "enablePullDownRefresh": false
 
@@ -91,13 +92,42 @@
             }
         },
         {
-            "path": "pages/show-manage/show-manage.vue",
+            "path": "pages/show-manage/show-manage",
             "style": {
                 "navigationBarTitleText": "",
                 "navigationStyle": "custom",
                 "enablePullDownRefresh": false
+
+            }
+        },
+
+        {
+            "path": "pages/my-contractItem/my-contractItem",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": false
+
+            }
+        },
+        {
+            "path": "pages/sign-contract/sign-contract",
+            "style": {
+                "navigationBarTitleText": "",
+                "navigationStyle": "custom",
+                "enablePullDownRefresh": false
+
             }
         }
+
+
+
+
+
+
+
+
+
     ],
     "globalStyle": {
         "navigationBarTextStyle": "black",

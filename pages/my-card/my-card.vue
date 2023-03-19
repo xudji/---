@@ -5,65 +5,51 @@
             <MyHeader :isBack="false" hasBgc="transparent" title="我的名片" color="#ffffff"></MyHeader>
             <view class="header-main">
                 <view class="main-content">
-                    <image class="main-img" :src="avatarUrl" mode=""></image>
                     <view class="main">
-                        <view class="login" v-if="isLogin" style="position: relative; z-index:999;">
-                            <view @tap="goLogin" class="header-name">
-                                授权登录
-                            </view>
-                        </view>
-                        <view v-else class="header-name">
-                            {{nickName}}
+                        <view class="header-name">
+                            <image class="main-img" :src="avatarUrl" mode=""></image> {{nickName}}
                         </view>
                     </view>
+
                 </view>
+
             </view>
         </view>
-
-
-
-
 
         <!-- 内容块 -->
         <view class="card-content">
-            <view class="card-item" @tap="goCard" :myInfo="myInfo">
-                <iamge class="item-img" src=""></iamge>
-                <view class="item-card">
+            <view class="card-item" :myInfo="myInfo">
+                <view class="item-card" @tap="goCard">
                     名片
                 </view>
-                <view class="card-item" @tap="goMess">
-                    <image class="item-img1" src="" mode=""></image>
-                    <view class="item-card">
-                        消息
-                    </view>
-                </view>
-                <view class="card-item">
-                    <image class="item-img2" src="" mode=""></image>
-                    <view class="item-card" @tap="goHelp">
-                        客服及帮助
-                    </view>
+            </view>
+            <view class="card-item" @tap="goMess">
+                <view class="item-card">
+                    消息
                 </view>
             </view>
-            <MyTabber :selected="selected"></MyTabber>
-            <view class="mask" v-if="isLogin">
-
+            <view class="card-item">
+                <view class="item-card" @tap="goHelp">
+                    客服及帮助
+                </view>
+            </view>
+            <view class="card-item">
+                <view class="item-card" @tap="goBack">
+                    返回
+                </view>
             </view>
         </view>
+
+
+
+        <MyTabber :selected="selected"></MyTabber>
+
     </view>
 </template>
 
 <script>
     import MyTabbar from '@/common/tabbar/my-tabbar.vue'
-    import MyHeader from '@/common/tabbar/my-tabbar.vue'
-    import {
-        authLogin
-    } from '@/servies/login.js'
-    import {
-        stuCurrent
-    } from '@/servies/sign.js'
-    import {
-        stuInfo
-    } from '@/servies/student.js'
+    import MyHeader from '@/common/my-header/my-header.vue'
     import {
         mapState,
         mapActions
@@ -74,8 +60,8 @@
                 selected: 4,
                 myInfo: null,
                 params: {},
-                isLogin: true,
-                avatarUrl: '../',
+
+                avatarUrl: '../../static/img/pop.jpeg',
                 nickName: '胜云'
             }
         },
@@ -83,100 +69,27 @@
             MyTabbar,
             MyHeader
         },
-        onShow() {
-            this.getStu()
-        },
-        computed: {
-            ...mapState({
-                signInfo: state => state.sign.signInfo,
-                userList: state => state.user.userList,
-                student: state => state.user.student
-            })
-        },
         methods: {
-
-            getStu() {
-                if (uni.getStorageSync('token')) {
-                    stuInfo().then(res => {
-                        if (!res.name) return
-                        this.myInfo = res
-                        this.changeStudentActions(res)
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                }
+            goCard() {
+                uni.showToast({
+                    title: '请先入学',
+                    icon: 'error'
+                })
             },
-            getUser() {
-                if (wx.getUserProfile) {
-
-                    wx.getUserProfile({
-                        desc: '用于获取名片展示用户头像和昵称',
-                        lang: 'zh_CN',
-                        sucess: userData => {
-                            this.nickName = userData.userInfo.nickName
-                            this.avatarUrl = userData.userInfo.avatarUrl
-                            this.params.avatarUrl = userData.userInfo.avatarUrl
-                            this.params.nickName = userData.userInfo.nickName
-                            this.login()
-                        },
-                        fail: (err) => {
-                            this.isLogin = false
-                        }
-                    })
-                } else {
-                    wx.getUserInfo({
-                        success: res => {
-                            this.params.avatarUrl = res.userInfo.avatarUrl
-                            this.params.nickName = res.userInfo.nickName
-                            this.nickName = res.userInfo.nickName
-                            this.avatarUrl = res.userInfo.avatarUrl
-                            this.login()
-                        }
-                    })
-                }
+            goMess() {
+                uni.showToast({
+                    title: '该功能暂不开放',
+                    icon: 'error'
+                });
             },
-            login() {
-                uni.login({
-
-                    provider: 'weixin',
-                    success: loginRes => {
-                        authLogin({
-                            code: loginRes.code
-                        }).then(res => {
-                            this.params.openId = res.openId
-                            // 把openId保存到vuex
-                            this.changeOpenIdActions(this.params)
-                            //存储token到本地
-                            uni.setStorageSync('token', res.token)
-                            //获取学生信息
-                            this.getStu()
-                            //获取用户协议信息
-                            stuCurrent().then(res => {
-                                if (res.resultCode === 1020) {
-                                    res.classProtocolPath = res.classProtocolPath
-                                    res.signProtocolPath =
-                                        'https://fawnuat.xuxiluxian.cn/api' + res
-                                        .signProtocoPath
-                                    this.addSignInfoActions(res)
-                                    //改变状态
-                                    this.changeStatus({
-                                        status: 1
-                                    }).catch(err => {
-                                        console.log(err)
-                                    })
-                                    uni.showToast({
-                                        title: '登录成功',
-                                        icon: 'none'
-                                    })
-                                }
-
-
-
-                            })
-                        })
-                    }
-
-
+            goBack() {
+                uni.switchTab({
+                    url: '/pages/index/index'
+                });
+            },
+            goHelp() {
+                uni.navigateTo({
+                    url: '../consulting-help/consulting-help'
                 })
             }
         }
@@ -184,4 +97,120 @@
 </script>
 
 <style scoped>
+    .my-card {
+
+        width: 100vw;
+        height: 100vh;
+        background-color: #F3F5F7;
+    }
+
+    .my-header {
+        background-color: #5555ff;
+        width: 100vw;
+        height: 400rpx;
+    }
+
+
+
+    .main-content {}
+
+    .main-img {
+        width: 120rpx;
+        height: 120rpx;
+        border-radius: 50%;
+        position: absolute;
+        left: -150rpx;
+        top: -30rpx;
+    }
+
+    .main {
+        font-size: 40rpx;
+        height: 60rpx;
+
+        color: #FFFFFF;
+        position: absolute;
+        top: 200rpx;
+        left: 50%;
+        transform: translate(-50%);
+    }
+
+    .header-name {}
+
+    .card-content {
+        position: absolute;
+        top: 240rpx;
+        width: 100vw;
+        padding: 0 48rpx;
+        box-sizing: border-box;
+        margin-top: 60rpx;
+
+    }
+
+
+
+    .card-item {
+        background-color: #FFFFFF;
+        box-sizing: border-box;
+        margin-top: 30rpx;
+        border-radius: 20rpx;
+    }
+
+
+
+
+    .item-card {
+        line-height: 110rpx;
+        font-size: 28rpx;
+        font-family: Microsoft YaHei;
+        font-weight: 400;
+        color: #464646;
+        padding-left: 10rpx;
+
+        border-radius: 20rpx;
+        padding-left: 40rpx;
+    }
+
+    .finger {
+        width: 50rpx;
+        heigth: 50rpx;
+        animation: fingerHandle 1s ease infinite both;
+        transform: rotate(90deg);
+    }
+
+
+    .login {
+        position: relative;
+        z-index: 800;
+        width: 400rpx;
+        text-align: center;
+
+
+    }
+
+    /* 
+    @keyframes fingerHandle {
+        0% {
+            transform: none;
+        }
+
+        70% {
+            transform: scale3d(.8, .8, .8)
+        }
+
+        100% {
+            transform: none;
+        }
+    }
+ */
+
+    /* .mask {
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        height: 100%;
+        width: 100%;
+        opacity: 0.7;
+        background-color: #000;
+        filter: alpha(opacity=70%);
+    } */
 </style>
